@@ -2,39 +2,12 @@ import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import Square from './Square.js'
+import { playerHasWon } from './helpers.js'
 
 function Board() {
   const [xArray, setXArray] = useState([])
   const [yArray, setYArray] = useState([])
   const [isPlayerX, setPlayer] = useState(true)
-
-  function playerHasWon(array) {
-    if ([1, 2, 3].every(square => array.includes(square))) {
-      return true
-    }
-    if ([4, 5, 6].every(square => array.includes(square))) {
-      return true
-    }
-    if ([7, 8, 9].every(square => array.includes(square))) {
-      return true
-    }
-    if ([1, 4, 7].every(square => array.includes(square))) {
-      return true
-    }
-    if ([2, 5, 8].every(square => array.includes(square))) {
-      return true
-    }
-    if ([3, 6, 9].every(square => array.includes(square))) {
-      return true
-    }
-    if ([1, 5, 9].every(square => array.includes(square))) {
-      return true
-    }
-    if ([3, 5, 7].every(square => array.includes(square))) {
-      return true
-    }
-    return false
-  }
 
   function handlePlayerClick(isPlayerX, square) {
     if (isPlayerX === true) {
