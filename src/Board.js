@@ -11,6 +11,7 @@ function Board() {
   const [winner, setWinner] = useState({ playerHasWon: false, player: null })
 
   function handlePlayerClick(isPlayerX, square) {
+    if (winner.playerHasWon) return
     if (isPlayerX === true) {
       xArray.push(square)
       setXArray(xArray)
