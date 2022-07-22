@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import Square from './Square.js'
 
 function Board() {
@@ -54,9 +56,9 @@ function Board() {
 
   function displayMarker(square) {
     if (xArray.includes(square)) {
-      return 'X'
+      return <FontAwesomeIcon icon="fa-solid fa-x" size="6x" />
     } else if (yArray.includes(square)) {
-      return 'Y'
+      return <FontAwesomeIcon icon="fa-solid fa-o" size="6x" />
     } else {
       return
     }

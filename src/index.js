@@ -1,8 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faX, faO } from '@fortawesome/free-solid-svg-icons'
+
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+
+library.add(faX, faO)
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

@@ -52,6 +52,9 @@
 .square {
   border: 1px solid black;
   flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @keyframes App-logo-spin {
