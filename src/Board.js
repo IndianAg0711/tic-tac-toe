@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import Square from './Square.js'
@@ -8,19 +8,20 @@ function Board() {
   const [xArray, setXArray] = useState([])
   const [yArray, setYArray] = useState([])
   const [isPlayerX, setPlayer] = useState(true)
+  const [winner, setWinner] = useState({ playerHasWon: false, player: null })
 
   function handlePlayerClick(isPlayerX, square) {
     if (isPlayerX === true) {
       xArray.push(square)
       setXArray(xArray)
       if (playerHasWon(xArray)) {
-        alert('Player 1 has won!')
+        setWinner({ playerHasWon: true, player: 1 })
       }
     } else {
       yArray.push(square)
       setYArray(yArray)
       if (playerHasWon(yArray)) {
-        alert('Player 2 has won!')
+        setWinner({ playerHasWon: true, player: 2 })
       }
     }
 
@@ -37,9 +38,18 @@ function Board() {
     }
   }
 
+  function displayGameDialog() {
+    if (winner.playerHasWon) {
+      return `Player ${winner.player} has WON!`
+    }
+    return isPlayerX ? "Player 1's Turn" : "Player 2's Turn"
+  }
 
   return (
     <div className="boardContainer">
+      <div className="gameDialog">
+        <p>{displayGameDialog()}</p>
+      </div>
       <div className="board">
         <div className="row">
           <Square displayMarker={displayMarker} handlePlayerClick={handlePlayerClick} isPlayerX={isPlayerX} square={1} />
